@@ -216,7 +216,30 @@ function getKeysPressed(arr){
     var newArr = new Array();
     for(var i = 0; i < arr.length; i++){
         if(typeof arr[i] == "number"){
-            newArr[newArr.length] = arr[i];
+            var key = arr[i]
+            var val = "E";
+            if (key == 87 || key == 38)
+            {
+                val = "U";
+            }
+            else if (key == 83 || key == 40)
+            {
+                val = "D";
+            }
+            else if (key == 65 || key == 37)
+            {
+                val = "L";
+            }
+            else if (key == 68 || key == 39)
+            {
+                val = "R";
+            }
+            else if (key == 32)
+            {
+                val = "S";
+            }
+
+            newArr[newArr.length] = val;
         }
     }
     return newArr;
