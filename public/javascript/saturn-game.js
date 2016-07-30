@@ -182,8 +182,9 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../saturnbackend/' + randomInt(0,9999) + '/?' + (new Date).getTime(), function(json) {
-        Game.maze = jsonToMaze(json, new THREE.MeshBasicMaterial( { color: 0x660000 } ) );
+        Game.maze = jsonToMaze(json.Maze, new THREE.MeshBasicMaterial( { color: 0x660000 } ) );
         Game.scene.add(Game.maze);
+        Game.session = json.SessionID;
     });
 
     // cube
@@ -193,9 +194,43 @@ Game.init = function() {
     this.player.position.set(0, 0, 0);
     this.player.castShadow = true;
     this.scene.add( this.player );
+
+
 };
 
+//For knowing what keys are pressed
+var keys = [];
+window.addEventListener("keydown",
+    function(e){
+        keys[e.keyCode] = e.keyCode;
+    },
+    false);
+
+window.addEventListener('keyup',
+    function(e){
+        keys[e.keyCode] = false;
+    },
+    false);
+
+function getKeysPressed(arr){
+    var newArr = new Array();
+    for(var i = 0; i < arr.length; i++){
+        if(typeof arr[i] == "number"){
+            newArr[newArr.length] = arr[i];
+        }
+    }
+    return newArr;
+}
+
 Game.update = function() {
+    var gameState = {};
+    gameState.keys = getKeysPressed(keys);
+    console.log("Posting GameState: " + JSON.stringify(gameState));
+    $.post( "www.pythagorstudios.com/saturnbackend/" + Game.session, gameState, function( data ) {
+        console.log( data.name ); // John
+        console.log( data.time ); // 2pm
+    }, "json");
+
     if (Math.random() > 0.5)
     {
         this.player.position.x += 15;
