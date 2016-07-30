@@ -250,26 +250,9 @@ Game.update = function() {
     gameState.keys = getKeysPressed(keys);
     console.log("Posting GameState: " + JSON.stringify(gameState));
     $.post( "../../saturnbackend/" + Game.session, gameState, function( data ) {
-        this.player.position.x = data.players[Game.session].body.position.x;
-        this.player.position.y = data.players[Game.session].body.position.y;
+        this.player.position.x = data.players[Game.session].body.position.x * 10;
+        this.player.position.y = data.players[Game.session].body.position.y * 10;
     }, "json");
-
-    if (Math.random() > 0.5)
-    {
-        this.player.position.x += 15;
-    }
-    else
-    {
-        this.player.position.x -= 15;
-    }
-    if (Math.random() > 0.5)
-    {
-        this.player.position.z += 15;
-    }
-    else
-    {
-        this.player.position.z -= 15;
-    }
 };
 
 Game.draw = function (time) {
