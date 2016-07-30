@@ -226,7 +226,7 @@ Game.update = function() {
     var gameState = {};
     gameState.keys = getKeysPressed(keys);
     console.log("Posting GameState: " + JSON.stringify(gameState));
-    $.post( "www.pythagorstudios.com/saturnbackend/" + Game.session, gameState, function( data ) {
+    $.post( "../../saturnbackend/" + Game.session, gameState, function( data ) {
         console.log( data.name ); // John
         console.log( data.time ); // 2pm
     }, "json");
