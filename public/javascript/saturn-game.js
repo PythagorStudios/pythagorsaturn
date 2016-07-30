@@ -250,7 +250,8 @@ Game.update = function() {
     gameState.keys = getKeysPressed(keys);
     console.log("Posting GameState: " + JSON.stringify(gameState));
     $.post( "../../saturnbackend/" + Game.session, gameState, function( data ) {
-        console.log("Recieved Data: " + data);
+        this.player.position.x = data.players[Game.session].body.position.x;
+        this.player.position.y = data.players[Game.session].body.position.y;
     }, "json");
 
     if (Math.random() > 0.5)

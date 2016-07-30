@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/public/javascript/saturn-game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.45859873">
-              <caret line="252" column="40" selection-start-line="252" selection-start-column="40" selection-end-line="252" selection-end-column="40" />
+              <caret line="252" column="18" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -588,7 +588,7 @@
     <entry file="file://$PROJECT_DIR$/public/javascript/saturn-game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45859873">
-          <caret line="252" column="40" selection-start-line="252" selection-start-column="40" selection-end-line="252" selection-end-column="40" />
+          <caret line="252" column="18" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
           <folding />
         </state>
       </provider>
