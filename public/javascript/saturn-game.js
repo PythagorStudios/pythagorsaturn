@@ -250,8 +250,7 @@ Game.update = function() {
     gameState.keys = getKeysPressed(keys);
     console.log("Posting GameState: " + JSON.stringify(gameState));
     $.post( "../../saturnbackend/" + Game.session, gameState, function( data ) {
-        console.log( data.name ); // John
-        console.log( data.time ); // 2pm
+        console.log("Recieved Data: " + data);
     }, "json");
 
     if (Math.random() > 0.5)
