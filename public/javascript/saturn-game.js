@@ -202,7 +202,7 @@ Game.init = function() {
 var keys = [];
 window.addEventListener("keydown",
     function(e){
-        keys[e.keyCode] = e.keyCode;
+        keys[e.keyCode] = true;
     },
     false);
 
@@ -215,10 +215,12 @@ window.addEventListener('keyup',
 function getKeysPressed(arr){
     var newArr = new Array();
     for(var i = 0; i < arr.length; i++){
-        if(typeof arr[i] == "number"){
-            var key = arr[i]
-            var val = "E";
-            if (key == 87 || key == 38)
+        if(arr[i]){
+            var key = i;
+            
+            var val = "E";      //Is having it be E a good idea? You lose functionality of the E key 
+            //var val = "";
+            if (key == 87 || key == 38)     //These key codes don't seem right...
             {
                 val = "U";
             }
@@ -239,7 +241,7 @@ function getKeysPressed(arr){
                 val = "S";
             }
             console.log("Key Pressed: " + val);
-            newArr[newArr.length] = val;
+            newArr.push(val);
         }
     }
     return newArr;
